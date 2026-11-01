@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kauã Mattos — Desenvolvedor Full Stack</title>
+  <meta name="description" content="Portfólio de Kauã Mattos, desenvolvedor full stack pleno e empreendedor de Montenegro, RS.">
+  <meta name="theme-color" content="#0c0c0a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kauã Mattos — Desenvolvedor Full Stack">
+  <meta property="og:description" content="Desenvolvedor full stack pleno e cofundador da eazzy. Do banco de dados ao último pixel.">
+  <meta property="og:image" content="assets/og.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <script>
+    // Aplica tema salvo antes da pintura para evitar "flash"
+    try {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+    document.documentElement.classList.add("js");
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript><style>.loader{display:none}</style></noscript>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+
+  <!-- Intro: carimbo hanko + contador -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__stamp"><span>カ</span></div>
+    <div class="loader__count"><span class="loader__num">000</span></div>
+    <div class="loader__jp">読み込み中</div>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#top" class="nav__logo" aria-label="Kauã Mattos — início">
+      <span class="hanko">カ</span>
+      <span class="nav__name">Kauã Mattos</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#about"><span class="idx">01</span><span data-i18n="nav.about">Sobre</span></a>
+      <a href="#work"><span class="idx">02</span><span data-i18n="nav.work">Experiência</span></a>
+      <a href="#projects"><span class="idx">03</span><span data-i18n="nav.projects">Projetos</span></a>
+      <a href="#contact"><span class="idx">04</span><span data-i18n="nav.contact">Contato</span></a>
+    </nav>
+
+    <div class="nav__tools">
+      <div class="langs" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt">PT</button>
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ja" lang="ja">日本</button>
+      </div>
+      <button type="button" class="theme-toggle" data-i18n-aria="nav.theme" aria-label="Alternar tema">
+        <span class="theme-toggle__dot"></span>
+      </button>
+      <button type="button" class="burger" aria-expanded="false" aria-controls="mobile-menu" data-i18n-aria="nav.menu" aria-label="Menu">
+        <span class="burger__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mmenu" id="mobile-menu" hidden>
+    <nav aria-label="Menu">
+      <a href="#about"><span class="idx">01</span><span data-i18n="nav.about">Sobre</span></a>
+      <a href="#work"><span class="idx">02</span><span data-i18n="nav.work">Experiência</span></a>
+      <a href="#projects"><span class="idx">03</span><span data-i18n="nav.projects">Projetos</span></a>
+      <a href="#contact"><span class="idx">04</span><span data-i18n="nav.contact">Contato</span></a>
+    </nav>
+    <div class="mmenu__foot">
+      <a href="https://github.com/Kawatos" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/kau%C3%A3-mattos-969703257/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/kawatos___/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero__meta">
+        <span class="hero__tag" data-i18n="hero.tag">Portfólio — 2026</span>
+        <span class="hero__status"><i class="pulse"></i><span data-i18n="hero.status">Disponível para novos projetos</span></span>
+        <span class="hero__clock"><span data-i18n="hero.local">Hora local</span> <b class="clock">--:--:--</b> BRT</span>
+      </div>
+
+      <h1 class="hero__name" aria-label="Kauã Mattos">
+        <span class="hero__line" data-split>KAUÃ</span>
+        <span class="hero__line hero__line--2"><span data-split>MATTOS</span><span class="hero__jp" lang="ja" aria-hidden="true">カウア・マトス</span></span>
+      </h1>
+
+      <div class="hero__bottom">
+        <p class="hero__role reveal" data-i18n-html="hero.role">Desenvolvedor Full Stack <em>Pleno</em> &amp; empreendedor</p>
+        <p class="hero__lead reveal">
+          <span data-i18n="hero.lead">Construo</span>
+          <span class="rotator" aria-live="off"><span class="rotator__word">produtos</span></span>
+          <span data-i18n="hero.tail">de ponta a ponta — do banco de dados ao último pixel.</span>
+        </p>
+        <a href="#about" class="hero__scroll" data-cursor="↓">
+          <span class="hero__scroll-line"></span>
+          <span data-i18n="hero.scroll">Role para baixo</span>
+        </a>
+      </div>
+
+      <div class="hero__vertical" lang="ja" aria-hidden="true">フルスタック開発者</div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>JavaScript</span><i>✱</i><span>TypeScript</span><i>✱</i><span>React</span><i>✱</i><span>Next.js</span><i>✱</i><span>PHP</span><i>✱</i><span>Python</span><i>✱</i><span>SQL</span><i>✱</i><span>Docker</span><i>✱</i><span>WordPress</span><i>✱</i><span>Git</span><i>✱</i>
+        <span>JavaScript</span><i>✱</i><span>TypeScript</span><i>✱</i><span>React</span><i>✱</i><span>Next.js</span><i>✱</i><span>PHP</span><i>✱</i><span>Python</span><i>✱</i><span>SQL</span><i>✱</i><span>Docker</span><i>✱</i><span>WordPress</span><i>✱</i><span>Git</span><i>✱</i>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about">
+      <header class="section__head">
+        <span class="section__idx">01</span>
+        <span class="section__label" data-i18n="about.label">Sobre</span>
+      </header>
+
+      <p class="about__statement" data-words data-i18n="about.statement">Sou o Kauã, dev full stack de Montenegro, RS.</p>
+
+      <div class="about__grid">
+        <figure class="idcard" data-cursor="こんにちは">
+          <div class="idcard__photo">
+            <img src="assets/kaua.jpg" alt="Kauã Mattos" width="460" height="460" loading="lazy">
+            <span class="idcard__stamp" lang="ja">開発者</span>
+          </div>
+          <dl class="idcard__data">
+            <div><dt data-i18n="card.name">Nome</dt><dd>Kauã da Silva de Mattos</dd></div>
+            <div><dt data-i18n="card.age">Idade</dt><dd data-i18n="card.age_v">22 anos</dd></div>
+            <div><dt data-i18n="card.base">Base</dt><dd>Montenegro, RS — BR</dd></div>
+            <div><dt data-i18n="card.speaks">Idiomas</dt><dd>PT · EN · <span lang="ja">日本語</span></dd></div>
+            <div><dt data-i18n="card.focus">Foco</dt><dd data-i18n="card.focus_v">Web · Produto · Negócio</dd></div>
+          </dl>
+          <figcaption class="idcard__id">ID — KWT/108145993</figcaption>
+        </figure>
+
+        <div class="about__text">
+          <p class="reveal" data-i18n-html="about.p1"></p>
+          <p class="reveal" data-i18n-html="about.p2"></p>
+
+          <ul class="stats">
+            <li class="reveal"><b><span data-count="3">0</span>+</b><span data-i18n="stat.years">anos em produção</span></li>
+            <li class="reveal"><b><span data-count="15" class="repo-count">0</span></b><span data-i18n="stat.repos">repositórios públicos</span></li>
+            <li class="reveal"><b><span data-count="3">0</span></b><span data-i18n="stat.langs">idiomas falados</span></li>
+            <li class="reveal"><b>C1</b><span data-i18n="stat.english">inglês certificado</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section work" id="work">
+      <header class="section__head">
+        <span class="section__idx">02</span>
+        <span class="section__label" data-i18n="exp.label">Trajetória</span>
+      </header>
+      <h2 class="title"><span class="title__in" data-i18n="exp.title">Experiência</span></h2>
+
+      <ol class="jobs">
+        <li class="job is-current">
+          <button class="job__head" type="button" aria-expanded="false" data-cursor="+">
+            <span class="job__period"><i class="job__now" aria-hidden="true"></i><span data-i18n="eazzy.period"></span></span>
+            <span class="job__role"><span data-i18n="eazzy.role"></span></span>
+            <span class="job__company">eazzy</span>
+            <span class="job__plus" aria-hidden="true"></span>
+          </button>
+          <div class="job__body"><div><p data-i18n="eazzy.desc"></p><span class="job__where">Montenegro, RS</span></div></div>
+        </li>
+        <li class="job is-current">
+          <button class="job__head" type="button" aria-expanded="false" data-cursor="+">
+            <span class="job__period"><i class="job__now" aria-hidden="true"></i><span data-i18n="pleno.period"></span></span>
+            <span class="job__role"><span data-i18n="pleno.role"></span><span class="job__badge" data-i18n="exp.promo"></span></span>
+            <span class="job__company">Ouro Moderno Edtech</span>
+            <span class="job__plus" aria-hidden="true"></span>
+          </button>
+          <div class="job__body"><div><p data-i18n="pleno.desc"></p><span class="job__where">Montenegro, RS</span></div></div>
+        </li>
+        <li class="job">
+          <button class="job__head" type="button" aria-expanded="false" data-cursor="+">
+            <span class="job__period"><span data-i18n="junior.period"></span></span>
+            <span class="job__role"><span data-i18n="junior.role"></span><span class="job__badge" data-i18n="exp.promo"></span></span>
+            <span class="job__company">Ouro Moderno Edtech</span>
+            <span class="job__plus" aria-hidden="true"></span>
+          </button>
+          <div class="job__body"><div><p data-i18n="junior.desc"></p><span class="job__where">Montenegro, RS</span></div></div>
+        </li>
+        <li class="job">
+          <button class="job__head" type="button" aria-expanded="false" data-cursor="+">
+            <span class="job__period"><span data-i18n="intern.period"></span></span>
+            <span class="job__role"><span data-i18n="intern.role"></span></span>
+            <span class="job__company">Ouro Moderno Edtech</span>
+            <span class="job__plus" aria-hidden="true"></span>
+          </button>
+          <div class="job__body"><div><p data-i18n="intern.desc"></p><span class="job__where">Montenegro, RS</span></div></div>
+        </li>
+        <li class="job">
+          <button class="job__head" type="button" aria-expanded="false" data-cursor="+">
+            <span class="job__period"><span data-i18n="palmont.period"></span></span>
+            <span class="job__role"><span data-i18n="palmont.role"></span></span>
+            <span class="job__company">Palmont Engenharia</span>
+            <span class="job__plus" aria-hidden="true"></span>
+          </button>
+          <div class="job__body"><div><p data-i18n="palmont.desc"></p><span class="job__where">Guaíba, RS</span></div></div>
+        </li>
+        <li class="job">
+          <button class="job__head" type="button" aria-expanded="false" data-cursor="+">
+            <span class="job__period"><span data-i18n="ortobom.period"></span></span>
+            <span class="job__role"><span data-i18n="ortobom.role"></span></span>
+            <span class="job__company">Ortobom</span>
+            <span class="job__plus" aria-hidden="true"></span>
+          </button>
+          <div class="job__body"><div><p data-i18n="ortobom.desc"></p><span class="job__where">Montenegro, RS</span></div></div>
+        </li>
+        <li class="job">
+          <button class="job__head" type="button" aria-expanded="false" data-cursor="+">
+            <span class="job__period"><span data-i18n="atacadao.period"></span></span>
+            <span class="job__role"><span data-i18n="atacadao.role"></span></span>
+            <span class="job__company">Atacadão Timbaúva</span>
+            <span class="job__plus" aria-hidden="true"></span>
+          </button>
+          <div class="job__body"><div><p data-i18n="atacadao.desc"></p><span class="job__where">Montenegro, RS</span></div></div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="projects" id="projects">
+      <div class="projects__pin">
+        <div class="projects__intro">
+          <header class="section__head">
+            <span class="section__idx">03</span>
+            <span class="section__label" data-i18n="proj.label">Trabalhos selecionados</span>
+          </header>
+          <h2 class="title"><span class="title__in" data-i18n="proj.title">Projetos</span></h2>
+          <p class="projects__hint" data-i18n="proj.hint">Continue rolando →</p>
+        </div>
+
+        <div class="projects__track">
+          <article class="pcard" data-cursor="↗">
+            <div class="pcard__art"><span class="pcard__kanji" lang="ja">幻</span><span class="pcard__read">GEN</span></div>
+            <div class="pcard__body">
+              <span class="pcard__num">01</span>
+              <h3>Alta Fantasia <small>Client Beta</small></h3>
+              <p data-i18n="p1.desc"></p>
+              <ul class="tags"><li>PHP</li><li>JavaScript</li><li>Docker</li><li>CSS</li></ul>
+              <div class="pcard__links">
+                <a href="https://github.com/Kawatos/alta-fantasia-client-beta" target="_blank" rel="noopener"><span data-i18n="proj.code">Código</span> ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard" data-cursor="↗">
+            <div class="pcard__art"><span class="pcard__kanji" lang="ja">心</span><span class="pcard__read">KOKORO</span></div>
+            <div class="pcard__body">
+              <span class="pcard__num">02</span>
+              <h3>Telepath</h3>
+              <p data-i18n="p2.desc"></p>
+              <ul class="tags"><li>TypeScript</li><li>React</li><li>Next.js</li></ul>
+              <div class="pcard__links">
+                <a href="https://v0-secure-messaging-app-puce.vercel.app" target="_blank" rel="noopener"><span data-i18n="proj.live">Ao vivo</span> ↗</a>
+                <a href="https://github.com/Kawatos/Telepath" target="_blank" rel="noopener"><span data-i18n="proj.code">Código</span> ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard" data-cursor="↗">
+            <div class="pcard__art"><span class="pcard__kanji" lang="ja">表</span><span class="pcard__read">HYŌ</span></div>
+            <div class="pcard__body">
+              <span class="pcard__num">03</span>
+              <h3>React × PHP CRUD</h3>
+              <p data-i18n="p3.desc"></p>
+              <ul class="tags"><li>React</li><li>PHP</li><li>REST</li></ul>
+              <div class="pcard__links">
+                <a href="https://react-php-crud.vercel.app" target="_blank" rel="noopener"><span data-i18n="proj.live">Ao vivo</span> ↗</a>
+                <a href="https://github.com/Kawatos/react_php_crud" target="_blank" rel="noopener"><span data-i18n="proj.code">Código</span> ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard" data-cursor="↗">
+            <div class="pcard__art"><span class="pcard__kanji" lang="ja">硝</span><span class="pcard__read">SHŌ</span></div>
+            <div class="pcard__body">
+              <span class="pcard__num">04</span>
+              <h3>GlassBoard</h3>
+              <p data-i18n="p4.desc"></p>
+              <ul class="tags"><li>PHP</li><li>CSS</li><li>Docker</li></ul>
+              <div class="pcard__links">
+                <a href="https://github.com/Kawatos/GlassBoard" target="_blank" rel="noopener"><span data-i18n="proj.code">Código</span> ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard" data-cursor="↗">
+            <div class="pcard__art"><span class="pcard__kanji" lang="ja">層</span><span class="pcard__read">SŌ</span></div>
+            <div class="pcard__body">
+              <span class="pcard__num">05</span>
+              <h3>MVC <small>from scratch</small></h3>
+              <p data-i18n="p5.desc"></p>
+              <ul class="tags"><li>PHP</li><li>MVC</li><li>OOP</li></ul>
+              <div class="pcard__links">
+                <a href="https://github.com/Kawatos/mvc" target="_blank" rel="noopener"><span data-i18n="proj.code">Código</span> ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard" data-cursor="↗">
+            <div class="pcard__art"><span class="pcard__kanji" lang="ja">鍵</span><span class="pcard__read">KAGI</span></div>
+            <div class="pcard__body">
+              <span class="pcard__num">06</span>
+              <h3>Hotkeys Sensor</h3>
+              <p data-i18n="p6.desc"></p>
+              <ul class="tags"><li>JavaScript</li><li>PHP</li></ul>
+              <div class="pcard__links">
+                <a href="https://github.com/Kawatos/hotkeys-sensor-JS" target="_blank" rel="noopener"><span data-i18n="proj.code">Código</span> ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <a class="pcard pcard--more" href="https://github.com/Kawatos" target="_blank" rel="noopener" data-cursor="GitHub">
+            <span class="pcard--more__n"><span class="repo-count">15</span></span>
+            <span class="pcard--more__sub" data-i18n="proj.more_sub">repositórios públicos e contando</span>
+            <span class="pcard--more__cta"><span data-i18n="proj.more">Ver tudo no GitHub</span> <span class="arrow">→</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section skills" id="skills">
+      <header class="section__head">
+        <span class="section__idx">04</span>
+        <span class="section__label" data-i18n="skills.label">Caixa de ferramentas</span>
+      </header>
+      <h2 class="title"><span class="title__in" data-i18n="skills.title">Stack &amp; idiomas</span></h2>
+
+      <div class="skills__grid">
+        <div class="sgroup reveal">
+          <h3 data-i18n="skills.front">Front-end</h3>
+          <ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Next.js</li></ul>
+        </div>
+        <div class="sgroup reveal">
+          <h3 data-i18n="skills.back">Back-end &amp; dados</h3>
+          <ul class="chips"><li>PHP</li><li>Python</li><li>SQL</li><li>MySQL</li><li>REST APIs</li><li>MVC</li></ul>
+        </div>
+        <div class="sgroup reveal">
+          <h3 data-i18n="skills.tools">Ferramentas</h3>
+          <ul class="chips"><li>Docker</li><li>Git</li><li>GitHub</li><li>WordPress</li><li>Vercel</li></ul>
+        </div>
+
+        <div class="spoken reveal">
+          <h3 data-i18n="skills.spoken">Idiomas</h3>
+          <div class="meter" style="--v:1">
+            <div class="meter__top"><span data-i18n="lang.pt">Português</span><span class="meter__native">Olá</span></div>
+            <div class="meter__bar"><i></i></div>
+            <span class="meter__lvl" data-i18n="lang.pt_l">Nativo</span>
+          </div>
+          <div class="meter" style="--v:.86">
+            <div class="meter__top"><span data-i18n="lang.en">Inglês</span><span class="meter__native">Hello</span></div>
+            <div class="meter__bar"><i></i></div>
+            <span class="meter__lvl" data-i18n="lang.en_l">Avançado · C1</span>
+          </div>
+          <div class="meter" style="--v:.22">
+            <div class="meter__top"><span data-i18n="lang.ja">Japonês</span><span class="meter__native" lang="ja">こんにちは</span></div>
+            <div class="meter__bar"><i></i></div>
+            <span class="meter__lvl" data-i18n="lang.ja_l">Iniciante · JLPT N5</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="edu__title reveal" data-i18n="edu.title">Formação &amp; certificados</h3>
+      <ul class="edu">
+        <li class="reveal"><span class="edu__year">2026 — 2028</span><span class="edu__name"><span data-i18n="edu1.title"></span> <span class="edu__now" data-i18n="edu.now"></span></span><span class="edu__meta" data-i18n="edu1.meta"></span></li>
+        <li class="reveal"><span class="edu__year">2022 — 2024</span><span class="edu__name"><span data-i18n="edu2.title"></span></span><span class="edu__meta" data-i18n="edu2.meta"></span></li>
+        <li class="reveal"><span class="edu__year">2023 — 2024</span><span class="edu__name"><span data-i18n="edu3.title"></span></span><span class="edu__meta" data-i18n="edu3.meta"></span></li>
+        <li class="reveal"><span class="edu__year">2023</span><span class="edu__name"><span data-i18n="edu4.title"></span></span><span class="edu__meta" data-i18n="edu4.meta"></span></li>
+        <li class="reveal"><span class="edu__year">2023</span><span class="edu__name"><span data-i18n="edu5.title"></span></span><span class="edu__meta" data-i18n="edu5.meta"></span></li>
+        <li class="reveal"><span class="edu__year">SAP</span><span class="edu__name"><span data-i18n="edu6.title"></span></span><span class="edu__meta" data-i18n="edu6.meta"></span></li>
+        <li class="reveal"><span class="edu__year">SAP</span><span class="edu__name"><span data-i18n="edu7.title"></span></span><span class="edu__meta" data-i18n="edu7.meta"></span></li>
+      </ul>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <header class="section__head">
+        <span class="section__idx">05</span>
+        <span class="section__label" data-i18n="contact.label">Contato</span>
+      </header>
+
+      <h2 class="contact__title"><span class="title__in" data-i18n-html="contact.title">Vamos construir<br><em>algo juntos?</em></span></h2>
+
+      <div class="contact__grid">
+        <p class="contact__sub reveal" data-i18n="contact.sub"></p>
+
+        <button type="button" class="ring-btn" data-open-chat data-magnetic data-cursor="✉">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="ring-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+            <text><textPath href="#ring-path" class="ring-text" textLength="486" lengthAdjust="spacing">Mande uma mensagem • Mande uma mensagem • </textPath></text>
+          </svg>
+          <span class="ring-btn__core" data-i18n="contact.chat">Abrir chat</span>
+        </button>
+      </div>
+
+      <ul class="channels">
+        <li class="reveal">
+          <span class="channels__k">E-mail</span>
+          <button type="button" class="channels__v copy-email" data-cursor="⧉">
+            <span class="email-text">kauasilvamattos0000@gmail.com</span>
+            <span class="channels__hint" data-i18n="contact.copy">Copiar e-mail</span>
+          </button>
+        </li>
+        <li class="reveal">
+          <span class="channels__k">WhatsApp</span>
+          <a class="channels__v" href="https://wa.me/5551998814393" target="_blank" rel="noopener">+55 51 99881-4393 <span class="arrow">↗</span></a>
+        </li>
+        <li class="reveal">
+          <span class="channels__k">LinkedIn</span>
+          <a class="channels__v" href="https://www.linkedin.com/in/kau%C3%A3-mattos-969703257/" target="_blank" rel="noopener">in/kauã-mattos <span class="arrow">↗</span></a>
+        </li>
+        <li class="reveal">
+          <span class="channels__k">GitHub</span>
+          <a class="channels__v" href="https://github.com/Kawatos" target="_blank" rel="noopener">@Kawatos <span class="arrow">↗</span></a>
+        </li>
+        <li class="reveal">
+          <span class="channels__k">Instagram</span>
+          <a class="channels__v" href="https://www.instagram.com/kawatos___/" target="_blank" rel="noopener">@kawatos___ <span class="arrow">↗</span></a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__big" aria-hidden="true"><span>KAUÃ</span><span class="footer__jp" lang="ja">ありがとう</span></div>
+    <div class="footer__row">
+      <span data-i18n="footer.made">Feito à mão, linha por linha, em Montenegro — RS.</span>
+      <span>© <span class="year">2026</span> Kauã Mattos. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+      <a href="#top" class="footer__top"><span data-i18n="footer.top">Voltar ao topo</span> ↑</a>
+    </div>
+  </footer>
+
+  <!-- ============ CHAT ============ -->
+  <button type="button" class="chat-fab" aria-expanded="false" aria-controls="chat" data-magnetic>
+    <span class="chat-fab__dot"></span>
+    <span class="chat-fab__label" data-i18n="chat.fab">Fale comigo</span>
+  </button>
+
+  <section class="chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chat-title" hidden>
+    <header class="chat__head">
+      <img src="assets/kaua.jpg" alt="" width="40" height="40" class="chat__avatar">
+      <div>
+        <strong id="chat-title">Kauã Mattos</strong>
+        <span class="chat__status"><i class="pulse"></i><span data-i18n="chat.status">Costuma responder em até 24h</span></span>
+      </div>
+      <button type="button" class="chat__close" data-i18n-aria="chat.close" aria-label="Fechar chat">✕</button>
+    </header>
+
+    <div class="chat__log" aria-live="polite"></div>
+
+    <form class="chat__form" autocomplete="on" novalidate>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <textarea class="chat__input" rows="1" required></textarea>
+      <button type="submit" class="chat__send" data-i18n-aria="chat.send" aria-label="Enviar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
