@@ -37,10 +37,22 @@
     return "pt";
   }
 
+  // Anos completos entre uma data (AAAA-MM-DD) e hoje
+  function yearsSince(iso) {
+    const [y, m, d] = iso.split("-").map(Number);
+    const now = new Date();
+    let n = now.getFullYear() - y;
+    if (now.getMonth() + 1 < m || (now.getMonth() + 1 === m && now.getDate() < d)) n--;
+    return n;
+  }
+  const AUTO = { age: yearsSince(CFG.birthDate), year: new Date().getFullYear() };
+
   let lang = detectLang();
   const t = (key, vars) => {
     let s = (I18N[lang] && I18N[lang][key]) ?? I18N.pt[key] ?? key;
-    if (vars) for (const k in vars) s = s.split(`{${k}}`).join(vars[k]);
+    if (typeof s !== "string") return s;
+    vars = { ...AUTO, ...vars };
+    for (const k in vars) s = s.split(`{${k}}`).join(vars[k]);
     return s;
   };
 
@@ -384,7 +396,8 @@
   const fmt = new Intl.DateTimeFormat("pt-BR", { timeZone: CFG.timezone, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
   const tick = () => { clock.textContent = fmt.format(new Date()); };
   tick(); setInterval(tick, 1000);
-  $(".year").textContent = new Date().getFullYear();
+  $(".year").textContent = AUTO.year;
+  $(".years-count").dataset.count = yearsSince(CFG.careerStart);
 
   /* =========================================================
      Experiência (acordeão)

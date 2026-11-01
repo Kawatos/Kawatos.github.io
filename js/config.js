@@ -15,5 +15,7 @@ window.SITE_CONFIG = {
   githubUser: "Kawatos",
   linkedin: "https://www.linkedin.com/in/kau%C3%A3-mattos-969703257/",
   instagram: "https://www.instagram.com/kawatos___/",
-  timezone: "America/Sao_Paulo"
+  timezone: "America/Sao_Paulo",
+  birthDate: "2003-09-01",   // idade no cartão é calculada a partir daqui
+  careerStart: "2023-10-01"  // "anos em produção" contam a partir daqui
 };
