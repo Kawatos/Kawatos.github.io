@@ -698,9 +698,13 @@
      ========================================================= */
   function initNavScroll() {
     const nav = $(".nav");
+    const totop = $(".totop");
     let last = 0;
     const onScroll = () => {
       const y = scrollY;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      totop.classList.toggle("is-visible", y > innerHeight * 0.8);
+      totop.style.setProperty("--p", max > 0 ? (y / max).toFixed(3) : 0);
       nav.classList.toggle("is-scrolled", y > 40);
       nav.classList.toggle("is-hidden", y > last && y > 400 && !document.body.style.overflow);
       last = y;

@@ -339,7 +339,7 @@ main { overflow-x: clip; }
 .title {
   font-family: var(--f-display); font-weight: 900; font-variation-settings: "wdth" 68;
   font-size: clamp(56px, 11vw, 190px); line-height: .86; letter-spacing: -.02em; text-transform: uppercase;
-  overflow: hidden; padding-bottom: .04em; margin-bottom: clamp(32px, 5vw, 72px);
+  overflow: hidden; padding: .2em 0 .04em; margin-top: -.2em; margin-bottom: clamp(32px, 5vw, 72px);
 }
 html[lang="ja"] .title { font-family: var(--f-jp); font-size: clamp(40px, 8vw, 140px); letter-spacing: 0; line-height: 1.05; }
 .title__in { display: inline-block; }
@@ -574,7 +574,7 @@ html:not(.js) .meter__bar i { transform: none; }
 .contact__title {
   font-family: var(--f-display); font-weight: 900; font-variation-settings: "wdth" 68;
   font-size: clamp(54px, 10.5vw, 200px); line-height: .86; letter-spacing: -.025em; text-transform: uppercase;
-  overflow: hidden; padding-bottom: .05em;
+  overflow: hidden; padding: .2em 0 .05em; margin-top: -.2em;
 }
 html[lang="ja"] .contact__title { font-family: var(--f-jp); letter-spacing: 0; line-height: 1.1; font-size: clamp(40px, 7.5vw, 130px); }
 .contact__grid { display: flex; justify-content: space-between; align-items: center; gap: 32px; margin: clamp(32px, 5vw, 64px) 0 clamp(48px, 6vw, 96px); }
@@ -718,3 +718,42 @@ html.js .chat-fab.is-pre { transform: translateY(140%); }
   .w { opacity: 1; }
   .grain { display: none; }
 }
+
+/* ---------- links no texto ---------- */
+.inline-link {
+  color: var(--fg); font-weight: 600;
+  background: linear-gradient(var(--red), var(--red)) 0 100% / 100% 1.5px no-repeat;
+  transition: background-size .4s var(--ease), color .3s;
+}
+.inline-link:hover { color: var(--on-red); background-size: 100% 100%; }
+.job__link { display: inline-block; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--red); padding-bottom: 32px; }
+.job__link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- card da eazzy ---------- */
+.pcard--live .pcard__art { background: var(--red); color: var(--on-red); }
+.pcard--live .pcard__path { color: var(--on-red); opacity: .75; }
+.pcard--live .pcard__big { -webkit-text-stroke-color: var(--on-red); }
+.pcard--live:hover .pcard__big { color: var(--on-red); -webkit-text-stroke-color: var(--on-red); }
+.pcard__tagline { display: flex; align-items: center; gap: 12px; font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; }
+.pcard__live { display: inline-flex; align-items: center; gap: 7px; background: var(--on-red); color: var(--red); padding: 4px 9px 4px 7px; border-radius: 999px; font-weight: 500; }
+
+/* ---------- voltar ao topo ---------- */
+.totop {
+  position: fixed; right: clamp(16px, 2.5vw, 32px); bottom: calc(clamp(16px, 2.5vw, 32px) + 64px); z-index: 109;
+  width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--bg); color: var(--fg); font-size: 18px; font-weight: 700;
+  opacity: 0; transform: translateY(16px) scale(.8); pointer-events: none;
+  transition: opacity .4s, transform .5s var(--ease-out), background-color .3s, color .3s;
+}
+.totop.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.totop:hover { background: var(--red); color: var(--on-red); }
+.totop svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.totop circle { fill: none; stroke-width: 2; }
+.totop__track { stroke: var(--line); }
+.totop__ring { stroke: var(--red); stroke-dasharray: 100; stroke-dashoffset: calc(100 - var(--p, 0) * 100); }
+.totop:hover .totop__ring { stroke: var(--on-red); }
+.totop span { position: relative; transition: transform .4s var(--ease-out); }
+.totop:hover span { transform: translateY(-3px); }
+@media (max-width: 520px) { .totop { width: 44px; height: 44px; bottom: calc(16px + 60px); } }
+.pcard--live h3 { text-transform: none; }
