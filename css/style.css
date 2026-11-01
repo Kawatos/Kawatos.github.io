@@ -96,27 +96,18 @@ em { font-style: normal; color: var(--red); }
   background: var(--red); transform-origin: 0 50%; transform: scaleX(0);
 }
 
-/* ---------- cursor ---------- */
+/* ---------- cursor (rótulo que segue o mouse; o cursor do sistema continua visível) ---------- */
 .cursor { display: none; }
 @media (hover: hover) and (pointer: fine) {
-  html.js body, html.js a, html.js button { cursor: none; }
   .cursor {
-    display: grid; place-items: center;
-    position: fixed; top: 0; left: 0; z-index: 200; pointer-events: none;
-    width: 12px; height: 12px; margin: -6px 0 0 -6px;
-    border-radius: 50%; background: var(--red);
-    transition: width .35s var(--ease-out), height .35s var(--ease-out), margin .35s var(--ease-out), background-color .3s;
-    mix-blend-mode: normal;
+    display: block; position: fixed; top: 0; left: 0; z-index: 200; pointer-events: none;
+    padding: 7px 12px; border-radius: 999px;
+    background: var(--red); color: var(--on-red);
+    font-family: var(--f-mono); font-size: 12px; line-height: 1; white-space: nowrap;
+    opacity: 0; scale: .6; transition: opacity .25s, scale .35s var(--ease-out);
   }
-  .cursor.is-hover { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
-  .cursor.is-label { width: 88px; height: 88px; margin: -44px 0 0 -44px; }
-  .cursor.is-down { transform: scale(.8); }
-  .cursor__label {
-    font-family: var(--f-mono); font-size: 13px; color: var(--on-red);
-    opacity: 0; transition: opacity .2s; white-space: nowrap; letter-spacing: .02em;
-  }
-  .cursor.is-label .cursor__label { opacity: 1; }
-  .cursor.is-text { width: 3px; height: 28px; margin: -14px 0 0 -1.5px; border-radius: 2px; }
+  .cursor.is-label { opacity: 1; scale: 1; }
+  .cursor__label:lang(ja), .cursor__label { font-family: var(--f-mono), var(--f-jp); }
 }
 
 /* ---------- loader ---------- */
@@ -125,21 +116,14 @@ em { font-style: normal; color: var(--red); }
   background: var(--red); color: var(--on-red);
   display: grid; place-items: center;
 }
-.loader__stamp {
-  width: clamp(90px, 14vw, 150px); aspect-ratio: 1;
-  border: 5px solid currentColor; border-radius: 10px;
-  display: grid; place-items: center;
-  font-family: var(--f-jp); font-weight: 900; font-size: clamp(48px, 8vw, 88px); line-height: 1;
-  transform: rotate(-8deg) scale(1.4); opacity: 0;
-}
 .loader__count {
   position: absolute; left: var(--pad); bottom: var(--pad);
   font-family: var(--f-display); font-weight: 900; font-variation-settings: "wdth" 62;
   font-size: clamp(64px, 14vw, 200px); line-height: .8; letter-spacing: -.02em;
 }
-.loader__jp {
-  position: absolute; right: var(--pad); top: var(--pad);
-  font-family: var(--f-jp); font-weight: 700; writing-mode: vertical-rl; letter-spacing: .3em; font-size: 14px;
+.loader__name {
+  position: absolute; left: var(--pad); top: var(--pad);
+  font-family: var(--f-mono); font-size: 13px; text-transform: uppercase; letter-spacing: .08em;
 }
 html:not(.js) .loader { display: none; }
 .loader { clip-path: inset(0 0 0% 0); }
@@ -171,16 +155,8 @@ html:not(.js) .loader { display: none; }
 .nav.is-hidden { transform: translateY(-100%); }
 
 .nav__logo { display: flex; align-items: center; gap: 12px; font-weight: 700; }
-.hanko {
-  display: grid; place-items: center;
-  width: 34px; height: 34px; border-radius: 6px;
-  background: var(--red); color: var(--on-red);
-  font-family: var(--f-jp); font-weight: 900; font-size: 19px; line-height: 1;
-  transform: rotate(-6deg);
-  transition: transform .5s var(--ease-out);
-}
-.nav__logo:hover .hanko { transform: rotate(6deg) scale(1.08); }
-.nav__name { font-variation-settings: "wdth" 85; letter-spacing: .01em; text-transform: uppercase; font-size: 14px; }
+.nav__name { font-weight: 800; font-variation-settings: "wdth" 85; letter-spacing: .01em; text-transform: uppercase; font-size: 15px; transition: color .3s; }
+.nav__logo:hover .nav__name { color: var(--red); }
 
 .nav__links { display: flex; gap: clamp(16px, 2.4vw, 36px); }
 .nav__links a, .mmenu a {
@@ -241,7 +217,6 @@ html:not(.js) .loader { display: none; }
 @media (max-width: 900px) {
   .nav__links { display: none; }
   .burger { display: grid; }
-  .nav__name { display: none; }
 }
 @media (max-width: 420px) {
   .langs button { padding: 5px 7px; }
@@ -252,15 +227,18 @@ html:not(.js) .loader { display: none; }
 .hero {
   position: relative; min-height: 100svh;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 110px var(--pad) clamp(28px, 4vw, 48px);
+  padding: 96px var(--pad) clamp(28px, 4vw, 48px);
   overflow: hidden;
 }
 .hero__meta {
-  position: absolute; top: 96px; left: var(--pad); right: var(--pad);
+  margin-bottom: auto; padding-bottom: clamp(32px, 5vh, 64px);
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px;
   font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--muted);
 }
-.hero__status { display: inline-flex; align-items: center; gap: 8px; color: var(--fg); }
+.hero__status {
+  display: inline-flex; align-items: center; gap: 8px; color: var(--fg);
+  border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px 6px 10px;
+}
 .pulse {
   position: relative; width: 8px; height: 8px; border-radius: 50%; background: #3ddc84; display: inline-block; flex: none;
 }
@@ -273,7 +251,7 @@ html:not(.js) .loader { display: none; }
 
 .hero__name {
   font-family: var(--f-display); font-weight: 800;
-  font-size: clamp(76px, 21vw, 360px);
+  font-size: clamp(76px, min(21vw, 34vh), 360px);
   line-height: .8; letter-spacing: -.035em; text-transform: uppercase;
   margin-left: -.04em;
   user-select: none;
@@ -315,7 +293,7 @@ html:not(.js) .loader { display: none; }
 @keyframes drip { to { top: 100%; } }
 
 .hero__vertical {
-  position: absolute; right: var(--pad); top: 50%; transform: translateY(-60%);
+  position: absolute; right: var(--pad); top: 52%; transform: translateY(-50%);
   writing-mode: vertical-rl; font-family: var(--f-jp); font-weight: 900;
   font-size: clamp(14px, 1.6vw, 22px); letter-spacing: .5em; color: var(--red);
 }
@@ -393,10 +371,9 @@ html[lang="ja"] .about__statement { font-family: var(--f-jp); font-weight: 700; 
 .idcard__photo { position: relative; overflow: hidden; aspect-ratio: 4/5; }
 .idcard__photo img {
   width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%;
-  filter: grayscale(1) contrast(1.1) brightness(.95);
-  transform: scale(1.15); transition: filter .8s var(--ease), transform 1.2s var(--ease-out);
+  transform: scale(1.06); transition: transform 1.2s var(--ease-out);
 }
-.idcard:hover .idcard__photo img { filter: grayscale(0) contrast(1.05); transform: scale(1.05); }
+.idcard:hover .idcard__photo img { transform: scale(1.12); }
 .idcard__stamp {
   position: absolute; right: 12px; bottom: 12px;
   writing-mode: vertical-rl; background: var(--red); color: var(--on-red);
@@ -494,19 +471,25 @@ html[lang="ja"] .job__role { font-family: var(--f-jp); font-size: clamp(19px, 2v
 .pcard__art {
   position: relative; aspect-ratio: 16/11; overflow: hidden;
   display: grid; place-items: center;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 39px, var(--line) 39px 40px),
-    repeating-linear-gradient(0deg, transparent 0 39px, var(--line) 39px 40px),
-    var(--bg-2);
+  background: var(--bg-2); border-bottom: 1px solid var(--line);
 }
-.pcard__kanji {
-  font-family: var(--f-jp); font-weight: 900; font-size: clamp(140px, 18vw, 260px); line-height: 1;
-  color: var(--red); transition: transform 1s var(--ease-out), letter-spacing 1s;
+.pcard__art { place-items: stretch; padding: 16px 18px; display: flex; flex-direction: column; justify-content: space-between; }
+.pcard__path { font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: .02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pcard__big {
+  font-family: var(--f-display); font-weight: 900; font-variation-settings: "wdth" 62;
+  font-size: clamp(90px, 9vw, 150px); line-height: .8; letter-spacing: -.03em;
+  color: transparent; -webkit-text-stroke: 1.5px var(--fg);
+  transition: color .5s var(--ease), -webkit-text-stroke-color .5s;
 }
-.pcard:hover .pcard__kanji { transform: scale(1.12) rotate(-4deg); }
-.pcard__read { position: absolute; left: 16px; bottom: 14px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; color: var(--muted); }
+.pcard:hover .pcard__big { color: var(--red); -webkit-text-stroke-color: var(--red); }
+.langbar__bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 2px; background: var(--line); }
+.langbar__bar i { width: var(--w); background: var(--c); transform-origin: 0 50%; transition: transform 1s var(--ease-out); }
+.pcard:hover .langbar__bar i { transform: scaleY(1.4); }
+.langbar__legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-family: var(--f-mono); font-size: 11px; }
+.langbar__legend li { display: inline-flex; align-items: center; gap: 6px; }
+.langbar__legend b { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.langbar__legend span { color: var(--muted); }
 .pcard__body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-.pcard__num { font-family: var(--f-mono); font-size: 12px; color: var(--red); }
 .pcard h3 { font-family: var(--f-display); font-weight: 800; font-variation-settings: "wdth" 80; font-size: clamp(28px, 2.6vw, 40px); line-height: 1; letter-spacing: -.01em; text-transform: uppercase; }
 .pcard h3 small { font-size: .45em; font-weight: 500; color: var(--muted); letter-spacing: .04em; vertical-align: middle; margin-left: 4px; }
 .pcard p { color: var(--muted); font-size: 15px; }
@@ -538,7 +521,7 @@ html[lang="ja"] .pcard--more__cta { font-family: var(--f-jp); }
   html.has-gsap .projects__hint { margin: 0 0 3vh; }
   html.has-gsap .pcard { width: clamp(320px, 30vw, 460px); }
   html.has-gsap .pcard__art { aspect-ratio: auto; height: clamp(110px, 24vh, 280px); }
-  html.has-gsap .pcard__kanji { font-size: min(18vw, 20vh); }
+  html.has-gsap .pcard__big { font-size: min(9vw, 13vh); }
   html.has-gsap .pcard__body { padding: 2.2vh 20px; gap: 1.2vh; }
   html.has-gsap .pcard--more { min-height: 0; }
 }

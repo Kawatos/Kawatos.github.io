@@ -483,28 +483,25 @@
      Cursor + magnetismo
      ========================================================= */
   if (finePointer && !reduced) {
+    // Rótulo que acompanha o mouse, deslocado para não cobrir o alvo do clique
     const cur = $(".cursor");
     const label = $(".cursor__label");
     let x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y;
     addEventListener("pointermove", e => { x = e.clientX; y = e.clientY; }, { passive: true });
-    addEventListener("pointerdown", () => cur.classList.add("is-down"));
-    addEventListener("pointerup", () => cur.classList.remove("is-down"));
     (function loop() {
-      cx += (x - cx) * 0.2; cy += (y - cy) * 0.2;
-      cur.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      cx += (x - cx) * 0.25; cy += (y - cy) * 0.25;
+      cur.style.transform = `translate3d(${cx + 18}px, ${cy + 18}px, 0)`;
       requestAnimationFrame(loop);
     })();
 
     document.addEventListener("pointerover", e => {
-      const target = e.target.closest("[data-cursor], a, button, textarea, input");
-      cur.classList.remove("is-hover", "is-label", "is-text");
-      if (!target) return;
-      if (target.matches("textarea, input")) return cur.classList.add("is-text");
-      if (target.dataset.cursor) { label.textContent = target.dataset.cursor; cur.classList.add("is-label"); }
-      else cur.classList.add("is-hover");
+      const target = e.target.closest("[data-cursor]");
+      const interactive = e.target.closest("a, button, input, textarea");
+      const show = target && (!interactive || interactive === target);
+      if (show) label.textContent = target.dataset.cursor;
+      cur.classList.toggle("is-label", !!show);
     });
-    document.addEventListener("pointerleave", () => { cur.style.opacity = 0; });
-    document.addEventListener("pointerenter", () => { cur.style.opacity = 1; });
+    document.addEventListener("pointerleave", () => cur.classList.remove("is-label"));
 
     $$("[data-magnetic]").forEach(el => {
       el.addEventListener("pointermove", e => {
@@ -586,12 +583,11 @@
     onComplete: () => { loader.remove(); lenis && lenis.start(); }
   });
   intro
-    .to(".loader__stamp", { opacity: 1, scale: 1, rotate: -8, duration: .5, ease: "back.out(2.2)" }, .1)
+    .from(".loader__name", { opacity: 0, y: 10, duration: .5 }, .1)
     .to(counter, {
       v: 100, duration: firstVisit ? 1.3 : .6, ease: "power2.inOut",
       onUpdate: () => { num.textContent = String(Math.round(counter.v)).padStart(3, "0"); }
     }, 0)
-    .to(".loader__stamp", { scale: .9, duration: .12, ease: "power1.in" })
     .to(loader, { clipPath: "inset(0 0 100% 0)", duration: .9, ease: "power4.inOut" }, "+=.05")
     .from(".hero__name .ch", { yPercent: 110, duration: 1.1, stagger: .045 }, "-=.45")
     .from(".hero__jp, .hero__vertical", { opacity: 0, y: 20, duration: .8 }, "-=.7")
@@ -681,10 +677,10 @@
     });
 
     $$(".pcard").forEach(card => {
-      const k = $(".pcard__kanji", card);
+      const k = $(".pcard__big", card);
       if (k) {
-        gsap.fromTo(k, { xPercent: 30 }, {
-          xPercent: -30, ease: "none",
+        gsap.fromTo(k, { x: 60 }, {
+          x: -20, ease: "none",
           scrollTrigger: { trigger: card, containerAnimation: tween, start: "left right", end: "right left", scrub: true }
         });
       }
